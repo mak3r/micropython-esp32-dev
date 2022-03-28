@@ -5,7 +5,10 @@ RUN apt update && \
 apt upgrade -y && \
 apt install -y make vim git git wget flex bison gperf python3 python3-pip python3-setuptools cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0
 
-RUN git clone https://github.com/micropython/micropython
+RUN git clone https://github.com/micropython/micropython && \
+git clone --depth=1 https://github.com/gandro/micropython-m5stickc-plus /m5stickc-plus && \
+cp /m5stickc-plus/lib/*.py /micropython/ports/esp32/modules/. && \
+cd /micropython/ports/esp32 
 
 RUN cd micropython/ports/esp32 && \
 git clone -b v4.4 --recursive https://github.com/espressif/esp-idf.git 

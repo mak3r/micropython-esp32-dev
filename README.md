@@ -2,10 +2,13 @@
 These instructions are used to setup an M5StickC Plus device with pure micropython so one does not have to use prototyping environment blockly/uiflow. 
 
 ## Build the container
-`docker build -t esp32-micropython /home/mark/dev/espressif/ -f micropython.dockerfile`
+* As of writing this
+    * the latest idf version is v4.4
+    * M5Stack IDF requires v3.2.3
+* `docker build -t esp32-upython /home/mark/dev/espressif/ -f micropython.dockerfile`
 
-## Run in the container
-`docker run -it --rm --name micropython --privileged -v /dev:/dev micropython:latest `
+## Run the container
+`docker run -it --rm --name micropython --privileged -v /dev:/dev esp32-upython:latest `
 
 ## The following commands are done inside the container 
 There is of course a way to configure the container to operate like one of the tools nested inside. There is also a way to make the container smaller overall. These could be done later if needed. 
